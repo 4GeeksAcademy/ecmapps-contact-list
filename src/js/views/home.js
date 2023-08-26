@@ -5,9 +5,12 @@ import { Link } from "react-router-dom";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
-	useEffect(()=>{actions.getContacts()},[store.contacts.length])
 	let imgUrl = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
 
+	useEffect(()=>{actions.getContacts();
+		console.log("Running!");
+	},[store.contacts.length>-1])
+	
 	function saveContact(obj) {
 		actions.setSingle(obj);
 	}
